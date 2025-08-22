@@ -41,7 +41,7 @@ PACKAGES UTILISES
 1. Chargement de la page principale :
    http://annuairesante.ameli.fr/trouver-un-professionnel-de-sante/chirurgiens-dentistes/44-loire-atlantique
 
-2. Extraction des trois listes de communes (balises **<ul>** des classes "first", "second", "third").
+2. Extraction des trois listes de communes (balises des classes "first", "second", "third").
 
 3. Collecte des praticiens par commune :
    - Récupération des liens des fiches praticiens
