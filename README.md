@@ -35,9 +35,9 @@ PACKAGES UTILISES
 - seaborn
 - matplotlib
 
-=====================================================
-ETAPE 1 : WEB SCRAPING
-================================================-----
+
+# ETAPE 1 : WEB SCRAPING
+
 1. Chargement de la page principale :
    http://annuairesante.ameli.fr/trouver-un-professionnel-de-sante/chirurgiens-dentistes/44-loire-atlantique
 
