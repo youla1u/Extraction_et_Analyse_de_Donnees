@@ -1,7 +1,5 @@
-=====================================================
         Extraction de données - Loire Atlantique
        (Chirurgiens-Dentistes via Web Scraping)
-=====================================================
 
 OBJECTIF
 --------
