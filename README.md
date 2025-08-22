@@ -62,9 +62,8 @@ PACKAGES UTILISES
 6. Export final :
    - Fichier CSV : Donnees_extraites.csv
 
-=====================================================
-ETAPE 2 : PREPARATION DES DONNEES
-================================================-----
+# ETAPE 2 : PREPARATION DES DONNEES
+
 1. Nettoyage des noms de communes pour uniformiser l’écriture
    (SAINT → ST, suppression des accents, etc.)
 2. Ajout d’une colonne "PTOT" = population totale
@@ -72,9 +71,9 @@ ETAPE 2 : PREPARATION DES DONNEES
 3. Correction des valeurs manquantes
    → Remplissage manuel de quelques communes absentes
 
-=====================================================
-ETAPE 3 : ANALYSES
-================================================-----
+
+# ETAPE 3 : ANALYSES
+
 1) Distribution du nombre de praticiens par commune
    - Calcul du nombre de praticiens uniques
    - Histogrammes + boxplots
@@ -97,9 +96,9 @@ ETAPE 3 : ANALYSES
    - Communes avec ratio habitants/praticien très élevé
      (souvent grandes villes).
 
-=====================================================
-RESULTATS
-================================================-----
+
+# RESULTATS
+
 - Une base de données enrichie croisant praticiens et 
   population communale
 - Identification des communes avec forte densité
@@ -107,9 +106,8 @@ RESULTATS
 - Rapport population/praticien ≈ 1 500 habitants/praticien
   dans les communes standards
 
-=====================================================
-FICHIERS GENERES
-================================================-----
+# FICHIERS GENERES
+
 - Donnees_extraites.csv  (praticiens et adresses)
 - Loire_atlantique.csv   (population communale)
 - Graphiques (histogrammes et boxplots)
