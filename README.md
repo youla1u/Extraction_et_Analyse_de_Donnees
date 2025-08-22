@@ -1,58 +1,116 @@
 =====================================================
-        Extraction de données - Loire Atlantique
-       (Chirurgiens-Dentistes via Web Scraping)
+        EXTRACTION ET ANALYSE DES DONNEES
+           CHIRURGIENS-DENTISTES - 44
 =====================================================
 
+Auteur : Mohamed YOULA
+
+-----------------------------------------------------
 OBJECTIF
---------
-L’objectif de ce projet est de collecter automatiquement
-les coordonnées des chirurgiens-dentistes du département
-Loire-Atlantique (44) à partir du site :
-http://annuairesante.ameli.fr
+-----------------------------------------------------
+Ce projet a pour but de :
+1. Extraire automatiquement les coordonnées des chirurgiens-dentistes 
+   de Loire-Atlantique (44) à partir du site ameli.fr
+2. Enrichir ces données avec la population des communes
+3. Réaliser une analyse statistique sur la répartition
+   des praticiens et le rapport population/praticien.
 
-PACKAGES UTILISÉS
------------------
-- requests : récupération du contenu HTML
-- BeautifulSoup4 : parsing et extraction des balises HTML
-- pandas : structuration et sauvegarde des données
+-----------------------------------------------------
+DONNEES UTILISEES
+-----------------------------------------------------
+1. Donnees_extraites.csv  → Données issues du scraping :
+   - Nom, Prénom
+   - Adresse
+   - Commune
+2. Loire_atlantique.csv   → Données de population
+   par commune
 
-ÉTAPES DU SCRAPING
-------------------
-1. Chargement de la page principale
-   - URL : http://annuairesante.ameli.fr/trouver-un-professionnel-de-sante/chirurgiens-dentistes/44-loire-atlantique
-   - Extraction des trois listes de communes (balises <ul> des classes "first", "second", "third").
+-----------------------------------------------------
+PACKAGES UTILISES
+-----------------------------------------------------
+- requests
+- beautifulsoup4
+- pandas
+- unidecode
+- seaborn
+- matplotlib
 
-2. Extraction des URLs des communes
-   - Construction de 3 listes d’URLs : L1, L2, L3.
+=====================================================
+ETAPE 1 : WEB SCRAPING
+================================================-----
+1. Chargement de la page principale :
+   http://annuairesante.ameli.fr/trouver-un-professionnel-de-sante/chirurgiens-dentistes/44-loire-atlantique
 
-3. Collecte des praticiens par commune
-   - Pour chaque URL de commune, récupération des liens de fiches praticiens.
-   - Stockage des liens dans une liste "ll" (217 praticiens trouvés dans la première liste).
+2. Extraction des trois listes de communes (balises <ul> des classes "first", "second", "third").
 
-4. Extraction des informations praticien
-   Pour chaque fiche praticien, les informations suivantes sont extraites :
+3. Collecte des praticiens par commune :
+   - Récupération des liens des fiches praticiens
+   - 217 praticiens trouvés pour la première liste (exemple)
+
+4. Extraction des informations praticien :
    - Nom et prénom
    - Structure (société)
    - Bâtiment (si présent)
    - Adresse complète
-   - Complément d’adresse (si présent)
+   - Complément d’adresse
    - Commune
 
-   Une fonction "adress()" a été créée pour nettoyer et segmenter
-   les adresses selon leur format (2 à 5 éléments).
-
-5. Structuration des données
-   - Création d’un DataFrame pandas avec les colonnes :
+5. Structuration des données :
+   - DataFrame pandas avec colonnes :
      ['Nom Prénom','BATIMENT','SOCIETE','ADRESSE','Coplement ADR','COMMUNE']
-   - Assemblage des résultats des trois listes de communes (df_1, df_2, df_3).
 
-6. Export final
-   - Fusion des DataFrames en un seul : DATA
-   - Sauvegarde au format CSV :
-     Donnees_extraites.csv
+6. Export final :
+   - Fichier CSV : Donnees_extraites.csv
 
-RÉSULTAT
---------
-Un fichier CSV contenant la liste complète des chirurgiens-dentistes
-de Loire-Atlantique avec leurs coordonnées, prêt à être utilisé
-pour l’analyse ou tout traitement ultérieur.
+=====================================================
+ETAPE 2 : PREPARATION DES DONNEES
+================================================-----
+1. Nettoyage des noms de communes pour uniformiser l’écriture
+   (SAINT → ST, suppression des accents, etc.)
+2. Ajout d’une colonne "PTOT" = population totale
+   → Jointure entre praticiens et fichier Loire_atlantique.csv
+3. Correction des valeurs manquantes
+   → Remplissage manuel de quelques communes absentes
+
+=====================================================
+ETAPE 3 : ANALYSES
+================================================-----
+1) Distribution du nombre de praticiens par commune
+   - Calcul du nombre de praticiens uniques
+   - Histogrammes + boxplots
+   - Détection et suppression des outliers (méthode IQR)
+   - Résultat : ~3 praticiens par commune en moyenne
+     (hors valeurs aberrantes).
+
+2) Distribution population/praticien
+   - Ajout colonne "Population_par_praticien"
+   - Calcul = Population totale / Nb praticiens
+   - Détection des outliers
+   - Résultat : ~1 486 habitants par praticien en moyenne
+     (hors valeurs aberrantes)
+   - Min : 272 habitants/praticien
+   - Max : 3 359 habitants/praticien
+
+3) Analyse des outliers
+   - Communes avec beaucoup de praticiens (Nantes,
+     Saint-Nazaire, Rezé, Saint-Herblain, etc.)
+   - Communes avec ratio habitants/praticien très élevé
+     (souvent grandes villes).
+
+=====================================================
+RESULTATS
+================================================-----
+- Une base de données enrichie croisant praticiens et 
+  population communale
+- Identification des communes avec forte densité
+  de praticiens
+- Rapport population/praticien ≈ 1 500 habitants/praticien
+  dans les communes standards
+
+=====================================================
+FICHIERS GENERES
+================================================-----
+- Donnees_extraites.csv  (praticiens et adresses)
+- Loire_atlantique.csv   (population communale)
+- Graphiques (histogrammes et boxplots)
+
