@@ -1,6 +1,5 @@
 
 #        EXTRACTION ET ANALYSE DES DONNEES
-#           CHIRURGIENS-DENTISTES - 44
 
 
 Auteur : Mohamed YOULA
