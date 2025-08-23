@@ -1,5 +1,5 @@
 
-#        EXTRACTION ET ANALYSE DES DONNEES
+#        EXTRACTION ET ANALYSE DE DONNEES
 
 
 Auteur : Mohamed YOULA
@@ -61,7 +61,7 @@ PACKAGES UTILISES
 6. Export final :
    - Fichier CSV : Donnees_extraites.csv
 
-# ETAPE 2 : PREPARATION DES DONNEES
+# ETAPE 2 : TANSFORMATION ET PREPARATION DE DONNEES
 
 1. Nettoyage des noms de communes pour uniformiser l’écriture
    (SAINT → ST, suppression des accents, etc.)
@@ -71,7 +71,7 @@ PACKAGES UTILISES
    → Remplissage manuel de quelques communes absentes
 
 
-# ETAPE 3 : ANALYSES
+# ETAPE 3 : ANALYSES DE DONNEES
 
 1) Distribution du nombre de praticiens par commune
    - Calcul du nombre de praticiens uniques
