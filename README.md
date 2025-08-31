@@ -2,7 +2,7 @@
 #        EXTRACTION ET ANALYSE DE DONNEES
  
  
-Auteur : Mohamed YOULA
+Auteur : Mohamed YOULA 
 
 -----------------------------------------------------
 OBJECTIF
